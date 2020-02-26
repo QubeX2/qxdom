@@ -1,4 +1,6 @@
-const renderElem = (vNode) => {
+import { VNode } from "./vnode";
+
+const renderElem = (vNode: VNode) => {
     const $el = document.createElement(vNode.tagName);
 
     for(const [k, v] of Object.entries(vNode.attrs)) {
@@ -19,6 +21,6 @@ const render = (vNode) => {
     }
 
     return renderElem(vNode);
-}
+};
 
 export default render;
