@@ -4,14 +4,14 @@ const renderElem = (vNode) => {
         $el.setAttribute(k, v);
     }
     for (const child of vNode.children) {
-        $el.appendChild(render(child));
+        $el.appendChild(qxdom(child));
     }
     return $el;
 };
-const render = (vNode) => {
+const qxdom = (vNode) => {
     if (typeof vNode === 'string') {
         return document.createTextNode(vNode);
     }
     return renderElem(vNode);
 };
-export default render;
+export default qxdom;

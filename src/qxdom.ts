@@ -1,6 +1,6 @@
-import { VNode } from "./vnode";
+import { QNode } from "./qnode";
 
-const renderElem = (vNode: VNode) => {
+const renderElem = (vNode: QNode) => {
     const $el = document.createElement(vNode.tagName);
 
     for(const [k, v] of Object.entries(vNode.attrs)) {
@@ -8,14 +8,14 @@ const renderElem = (vNode: VNode) => {
     }
 
     for(const child of vNode.children) {
-       $el.appendChild(render(child)); 
+       $el.appendChild(qxdom(child));
     }
 
     return $el;
 
 };
 
-const render = (vNode) => {
+const qxdom = (vNode) => {
     if(typeof vNode === 'string') {
         return document.createTextNode(vNode);
     }
@@ -23,4 +23,4 @@ const render = (vNode) => {
     return renderElem(vNode);
 };
 
-export default render;
+export default qxdom;
